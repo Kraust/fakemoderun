@@ -1,4 +1,4 @@
-# `fakemoderun - Affinitize Cores to Processes
+# `fakemoderun` - Affinitize Cores to Processes
 
 `fakemoderun` is a simple cli application which can be used to affintiize cores to
 processes from the command line in windows . The aim is to be similar to Linux's
