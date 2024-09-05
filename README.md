@@ -20,7 +20,7 @@ fakemoderun.exe -cores 1-8 notepad.exe test.txt
 You can use this with steam in the same way as you'd use a program like
 `gamemoderun` i.e. by using it in your launch options.
 
-```
+```powershell
 fakemoderun.exe -cores 0-7,16-23 %command%
 ```
 
