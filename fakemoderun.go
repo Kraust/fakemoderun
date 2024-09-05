@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"log"
-	"os"
 	"os/exec"
 	"reflect"
 	"strings"
@@ -11,7 +10,7 @@ import (
 )
 
 var (
-	f_cache = flag.Bool("cache", true, "Prefer Cache Cores")
+	f_cache = flag.Bool("cache", false, "Prefer Cache Cores")
 	f_freq  = flag.Bool("freq", false, "Prefer Frequency Cores")
 )
 
@@ -59,7 +58,7 @@ func getMask7950X3D() (uintptr, uintptr, error) {
 	freq |= 1 << 26
 	freq |= 1 << 27
 	freq |= 1 << 28
-	freq |= 1 << 39
+	freq |= 1 << 29
 	freq |= 1 << 30
 	freq |= 1 << 31
 
@@ -91,8 +90,10 @@ func getMask(useCache bool, useFreq bool) (uintptr, error) {
 }
 
 func main() {
-	name := strings.Join(os.Args[1:2], " ")
-	args := strings.Join(os.Args[2:], " ")
+	flag.Parse()
+
+	name := strings.Join(flag.Args()[:1], " ")
+	args := strings.Join(flag.Args()[1:], " ")
 
 	mask, err := getMask(*f_cache, *f_freq)
 	if err != nil {
